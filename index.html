@@ -1,1 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Professional Poultry Medicine Stock Management System"
+  >
+
+  <meta name="theme-color" content="#2563eb">
+
+  <title>Poultry Medicine Manager</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       LOADING SCREEN
+  ========================================================== -->
+
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-box">
+      <div class="loading-logo">💊</div>
+      <h2>Poultry Medicine Manager</h2>
+      <div class="spinner"></div>
+      <p>Loading your secure workspace...</p>
+    </div>
+  </div>
+
+
+  <!-- =========================================================
+       AUTH SECTION
+  ========================================================== -->
+
+  <section id="authSection" class="auth-section hidden">
+
+    <div class="auth-wrapper">
+
+      <div class="auth-brand">
+        <div class="brand-icon">💊</div>
+
+        <h1>Poultry Medicine Manager</h1>
+
+        <p>
+          Professional medicine inventory and stock management
+        </p>
+      </div>
+
+
+      <!-- LOGIN -->
+
+      <div id="loginCard" class="auth-card">
+
+        <div class="auth-card-header">
+          <h2>Welcome Back</h2>
+          <p>Sign in to your inventory</p>
+        </div>
+
+        <form id="loginForm">
+
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+
+            <input
+              id="loginEmail"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="loginPassword">Password</label>
+
+            <div class="password-field">
+
+              <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-target="loginPassword"
+              >
+                👁
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <button class="primary-btn full-btn" type="submit">
+            Sign In
+          </button>
+
+        </form>
+
+
+        <button
+          id="forgotPasswordBtn"
+          class="link-btn"
+          type="button"
+        >
+          Forgot password?
+        </button>
+
+
+        <div class="auth-divider">
+          <span>OR</span>
+        </div>
+
+
+        <button
+          id="showRegisterBtn"
+          class="secondary-btn full-btn"
+          type="button"
+        >
+          Create New Account
+        </button>
+
+      </div>
+
+
+      <!-- REGISTER -->
+
+      <div id="registerCard" class="auth-card hidden">
+
+        <div class="auth-card-header">
+
+          <h2>Create Account</h2>
+
+          <p>
+            Create your private inventory workspace
+          </p>
+
+        </div>
+
+
+        <form id="registerForm">
+
+          <div class="form-group">
+
+            <label for="registerName">
+              Full Name
+            </label>
+
+            <input
+              id="registerName"
+              type="text"
+              placeholder="Your name"
+              autocomplete="name"
+              maxlength="80"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="registerBusiness">
+              Business / Farm Name
+            </label>
+
+            <input
+              id="registerBusiness"
+              type="text"
+              placeholder="Optional"
+              maxlength="100"
+              autocomplete="organization"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="registerEmail">
+              Email Address
+            </label>
+
+            <input
+              id="registerEmail"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="registerPassword">
+              Password
+            </label>
+
+            <div class="password-field">
+
+              <input
+                id="registerPassword"
+                type="password"
+                placeholder="Minimum 6 characters"
+                autocomplete="new-password"
+                minlength="6"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                data-target="registerPassword"
+              >
+                👁
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="primary-btn full-btn"
+            type="submit"
+          >
+            Create Account
+          </button>
+
+        </form>
+
+
+        <button
+          id="showLoginBtn"
+          class="link-btn"
+          type="button"
+        >
+          Already have an account? Sign in
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       MAIN APPLICATION
+  ========================================================== -->
+
+  <div id="appSection" class="app-shell hidden">
+
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+
+      <div class="sidebar-brand">
+
+        <div class="sidebar-logo">💊</div>
+
+        <div>
+          <strong>Poultry Manager</strong>
+          <small>Inventory System</small>
+        </div>
+
+      </div>
+
+
+      <nav class="side-nav">
+
+        <button
+          class="nav-item active"
+          data-page="dashboardPage"
+        >
+          <span>📊</span>
+          Dashboard
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="medicinesPage"
+        >
+          <span>💊</span>
+          Medicines
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="salesPage"
+        >
+          <span>🧾</span>
+          Sales
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="historyPage"
+        >
+          <span>🕘</span>
+          History
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="alertsPage"
+        >
+          <span>🔔</span>
+          Alerts
+        </button>
+
+
+        <button
+          class="nav-item"
+          data-page="profilePage"
+        >
+          <span>👤</span>
+          Profile
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button id="themeBtn" class="sidebar-action">
+          🌙 Dark Mode
+        </button>
+
+        <button id="notificationBtn" class="sidebar-action">
+          🔔 Notifications
+        </button>
+
+        <button id="logoutBtn" class="logout-btn">
+          🚪 Sign Out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+      <!-- MOBILE HEADER -->
+
+      <header class="mobile-header">
+
+        <button id="mobileMenuBtn" class="icon-btn">
+          ☰
+        </button>
+
+        <div>
+          <strong>Poultry Manager</strong>
+        </div>
+
+        <button
+          class="icon-btn"
+          data-page="alertsPage"
+        >
+          🔔
+        </button>
+
+      </header>
+
+
+      <!-- =====================================================
+           DASHBOARD
+      ====================================================== -->
+
+      <section id="dashboardPage" class="page active-page">
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              INVENTORY OVERVIEW
+            </span>
+
+            <h1 id="welcomeTitle">
+              Good day
+            </h1>
+
+            <p>
+              Manage your poultry medicine inventory.
+            </p>
+
+          </div>
+
+
+          <button
+            id="dashboardAddBtn"
+            class="primary-btn"
+          >
+            + Add Medicine
+          </button>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+          <div class="stat-card blue">
+
+            <div class="stat-icon">💊</div>
+
+            <div>
+              <span>Total Medicines</span>
+              <strong id="totalMedicines">0</strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card green">
+
+            <div class="stat-icon">📦</div>
+
+            <div>
+              <span>Total Stock</span>
+              <strong id="totalStock">0</strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card orange">
+
+            <div class="stat-icon">⚠️</div>
+
+            <div>
+              <span>Low Stock</span>
+              <strong id="lowStockCount">0</strong>
+            </div>
+
+          </div>
+
+
+          <div class="stat-card red">
+
+            <div class="stat-icon">⏰</div>
+
+            <div>
+              <span>Expiring Soon</span>
+              <strong id="expiringCount">0</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Expiry Alerts</h3>
+                <p>Medicines requiring attention</p>
+              </div>
+
+              <button
+                class="text-btn"
+                data-page="alertsPage"
+              >
+                View All
+              </button>
+
+            </div>
+
+            <div id="dashboardAlerts" class="alert-list">
+              <div class="empty-state">
+                No expiry alerts.
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="panel">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Low Stock</h3>
+                <p>Medicines below minimum level</p>
+              </div>
+
+              <button
+                class="text-btn"
+                data-page="medicinesPage"
+              >
+                View All
+              </button>
+
+            </div>
+
+            <div id="dashboardLowStock" class="compact-list">
+              <div class="empty-state">
+                No low-stock medicines.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Recent Activity</h3>
+              <p>Latest inventory transactions</p>
+            </div>
+
+            <button
+              class="text-btn"
+              data-page="historyPage"
+            >
+              Full History
+            </button>
+
+          </div>
+
+          <div id="dashboardHistory" class="table-wrap">
+            <div class="empty-state">
+              No activity yet.
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           MEDICINES
+      ====================================================== -->
+
+      <section id="medicinesPage" class="page">
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              INVENTORY
+            </span>
+
+            <h1>Medicines</h1>
+
+            <p>
+              Manage medicines, batches and available stock.
+            </p>
+
+          </div>
+
+
+          <button
+            id="addMedicineBtn"
+            class="primary-btn"
+          >
+            + Add Medicine
+          </button>
+
+        </div>
+
+
+        <div class="toolbar">
+
+          <div class="search-box">
+
+            <span>🔎</span>
+
+            <input
+              id="medicineSearch"
+              type="search"
+              placeholder="Search medicine or batch..."
+            >
+
+          </div>
+
+
+          <select id="medicineFilter">
+
+            <option value="all">
+              All Medicines
+            </option>
+
+            <option value="available">
+              Available
+            </option>
+
+            <option value="low">
+              Low Stock
+            </option>
+
+            <option value="out">
+              Out of Stock
+            </option>
+
+            <option value="expiring">
+              Expiring Soon
+            </option>
+
+            <option value="expired">
+              Expired
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div id="medicineGrid" class="medicine-grid">
+
+          <div class="empty-state large">
+            Loading medicines...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SALES
+      ====================================================== -->
+
+      <section id="salesPage" class="page">
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              TRANSACTIONS
+            </span>
+
+            <h1>Sales</h1>
+
+            <p>
+              Record medicine sales and automatically update stock.
+            </p>
+
+          </div>
+
+          <button
+            id="newSaleBtn"
+            class="primary-btn"
+          >
+            + New Sale
+          </button>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Recent Sales</h3>
+              <p>Your latest sales transactions</p>
+            </div>
+
+          </div>
+
+
+          <div id="salesTable" class="table-wrap">
+
+            <div class="empty-state">
+              No sales recorded yet.
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           HISTORY
+      ====================================================== -->
+
+      <section id="historyPage" class="page">
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              AUDIT TRAIL
+            </span>
+
+            <h1>History</h1>
+
+            <p>
+              Complete record of inventory activity.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="toolbar">
+
+          <div class="search-box">
+
+            <span>🔎</span>
+
+            <input
+              id="historySearch"
+              type="search"
+              placeholder="Search history..."
+            >
+
+          </div>
+
+
+          <select id="historyFilter">
+
+            <option value="all">All Actions</option>
+            <option value="stock_added">Stock Added</option>
+            <option value="sale">Sale</option>
+            <option value="stock_updated">Stock Updated</option>
+            <option value="medicine_added">Medicine Added</option>
+            <option value="medicine_deleted">Medicine Deleted</option>
+
+          </select>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div id="historyTable" class="table-wrap">
+
+            <div class="empty-state">
+              No history available.
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           ALERTS
+      ====================================================== -->
+
+      <section id="alertsPage" class="page">
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              ATTENTION REQUIRED
+            </span>
+
+            <h1>Alerts</h1>
+
+            <p>
+              Expiry and stock alerts.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="alert-summary-grid">
+
+          <div class="alert-summary expired-summary">
+            <span>Expired</span>
+            <strong id="expiredAlertCount">0</strong>
+          </div>
+
+          <div class="alert-summary expiring-summary">
+            <span>Expiring Within 30 Days</span>
+            <strong id="expiringAlertCount">0</strong>
+          </div>
+
+          <div class="alert-summary low-summary">
+            <span>Low Stock</span>
+            <strong id="lowAlertCount">0</strong>
+          </div>
+
+          <div class="alert-summary out-summary">
+            <span>Out of Stock</span>
+            <strong id="outAlertCount">0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h3>Expiry & Stock Alerts</h3>
+              <p>Review medicines that require attention.</p>
+            </div>
+
+          </div>
+
+
+          <div id="fullAlerts" class="alert-list">
+
+            <div class="empty-state">
+              No alerts.
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           PROFILE
+      ====================================================== -->
+
+      <section id="profilePage" class="page">
+
+        <div class="page-header">
+
+          <div>
+
+            <span class="eyebrow">
+              ACCOUNT
+            </span>
+
+            <h1>Profile</h1>
+
+            <p>
+              Manage your account information.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-layout">
+
+          <div class="profile-card">
+
+            <div id="profileAvatar" class="profile-avatar">
+              U
+            </div>
+
+            <h2 id="profileName">
+              User
+            </h2>
+
+            <p id="profileEmail">
+              user@example.com
+            </p>
+
+          </div>
+
+
+          <div class="panel">
+
+            <form id="profileForm">
+
+              <div class="form-grid">
+
+                <div class="form-group">
+
+                  <label for="profileNameInput">
+                    Full Name
+                  </label>
+
+                  <input
+                    id="profileNameInput"
+                    type="text"
+                    maxlength="80"
+                    required
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="profileBusinessInput">
+                    Business / Farm Name
+                  </label>
+
+                  <input
+                    id="profileBusinessInput"
+                    type="text"
+                    maxlength="100"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>Email Address</label>
+
+                <input
+                  id="profileEmailInput"
+                  type="email"
+                  disabled
+                >
+
+              </div>
+
+
+              <button class="primary-btn" type="submit">
+                Save Profile
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================================================
+       MEDICINE MODAL
+  ========================================================== -->
+
+  <div id="medicineModal" class="modal hidden">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card large-modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            INVENTORY
+          </span>
+
+          <h2 id="medicineModalTitle">
+            Add Medicine
+          </h2>
+
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="medicineModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="medicineForm">
+
+        <input
+          id="medicineId"
+          type="hidden"
+        >
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="medicineName">
+              Medicine Name *
+            </label>
+
+            <input
+              id="medicineName"
+              type="text"
+              placeholder="e.g. Amoxicillin"
+              maxlength="120"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineCategory">
+              Category
+            </label>
+
+            <select id="medicineCategory">
+
+              <option value="Antibiotic">
+                Antibiotic
+              </option>
+
+              <option value="Vitamin">
+                Vitamin
+              </option>
+
+              <option value="Mineral">
+                Mineral
+              </option>
+
+              <option value="Vaccine">
+                Vaccine
+              </option>
+
+              <option value="Antiparasitic">
+                Antiparasitic
+              </option>
+
+              <option value="Electrolyte">
+                Electrolyte
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineUnit">
+              Unit *
+            </label>
+
+            <select id="medicineUnit">
+
+              <option value="Bottle">Bottle</option>
+              <option value="Box">Box</option>
+              <option value="Vial">Vial</option>
+              <option value="Pack">Pack</option>
+              <option value="Sachet">Sachet</option>
+              <option value="Tablet">Tablet</option>
+              <option value="Kg">Kg</option>
+              <option value="Liter">Liter</option>
+              <option value="Piece">Piece</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineBatch">
+              Batch / Lot Number *
+            </label>
+
+            <input
+              id="medicineBatch"
+              type="text"
+              placeholder="Batch number"
+              maxlength="80"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineQuantity">
+              Initial Stock *
+            </label>
+
+            <input
+              id="medicineQuantity"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineMinStock">
+              Minimum Stock Alert
+            </label>
+
+            <input
+              id="medicineMinStock"
+              type="number"
+              min="0"
+              step="0.01"
+              value="5"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineStockDate">
+              Stock Entry Date *
+            </label>
+
+            <input
+              id="medicineStockDate"
+              type="date"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineExpiry">
+              Expiry Date *
+            </label>
+
+            <input
+              id="medicineExpiry"
+              type="date"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicinePurchasePrice">
+              Purchase Price
+            </label>
+
+            <input
+              id="medicinePurchasePrice"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="medicineSalePrice">
+              Sale Price
+            </label>
+
+            <input
+              id="medicineSalePrice"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="medicineSupplier">
+            Supplier
+          </label>
+
+          <input
+            id="medicineSupplier"
+            type="text"
+            placeholder="Supplier name"
+            maxlength="120"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="medicineNotes">
+            Notes
+          </label>
+
+          <textarea
+            id="medicineNotes"
+            rows="3"
+            placeholder="Optional notes..."
+            maxlength="500"
+          ></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="medicineModal"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            Save Medicine
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       STOCK MODAL
+  ========================================================== -->
+
+  <div id="stockModal" class="modal hidden">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            STOCK
+          </span>
+
+          <h2>Add Stock</h2>
+
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="stockModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="stockForm">
+
+        <input id="stockMedicineId" type="hidden">
+
+
+        <div id="stockMedicineInfo" class="selected-medicine">
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="stockBatch">
+            Batch / Lot Number *
+          </label>
+
+          <input
+            id="stockBatch"
+            type="text"
+            maxlength="80"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="stockQuantity">
+              Quantity *
+            </label>
+
+            <input
+              id="stockQuantity"
+              type="number"
+              min="0.01"
+              step="0.01"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="stockDate">
+              Stock Date *
+            </label>
+
+            <input
+              id="stockDate"
+              type="date"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="stockExpiry">
+              Expiry Date *
+            </label>
+
+            <input
+              id="stockExpiry"
+              type="date"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="stockPurchasePrice">
+              Purchase Price
+            </label>
+
+            <input
+              id="stockPurchasePrice"
+              type="number"
+              min="0"
+              step="0.01"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="stockModal"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            Add Stock
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       SALE MODAL
+  ========================================================== -->
+
+  <div id="saleModal" class="modal hidden">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="eyebrow">
+            SALE
+          </span>
+
+          <h2>Record Sale</h2>
+
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal="saleModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="saleForm">
+
+        <div class="form-group">
+
+          <label for="saleMedicine">
+            Medicine *
+          </label>
+
+          <select id="saleMedicine" required>
+
+            <option value="">
+              Select medicine
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div id="saleMedicineInfo" class="selected-medicine">
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="saleQuantity">
+            Quantity Sold *
+          </label>
+
+          <input
+            id="saleQuantity"
+            type="number"
+            min="0.01"
+            step="0.01"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="saleCustomer">
+            Customer / Buyer
+          </label>
+
+          <input
+            id="saleCustomer"
+            type="text"
+            maxlength="120"
+            placeholder="Optional"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="saleDate">
+            Sale Date *
+          </label>
+
+          <input
+            id="saleDate"
+            type="date"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="saleNotes">
+            Notes
+          </label>
+
+          <textarea
+            id="saleNotes"
+            rows="3"
+            maxlength="300"
+          ></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-close-modal="saleModal"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-btn"
+          >
+            Complete Sale
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       CONFIRM MODAL
+  ========================================================== -->
+
+  <div id="confirmModal" class="modal hidden">
+
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-card small-modal">
+
+      <div class="confirm-icon">
+        ⚠️
+      </div>
+
+      <h2 id="confirmTitle">
+        Confirm Action
+      </h2>
+
+      <p id="confirmMessage">
+        Are you sure?
+      </p>
+
+
+      <div class="modal-actions">
+
+        <button
+          id="confirmCancel"
+          class="secondary-btn"
+          type="button"
+        >
+          Cancel
+        </button>
+
+        <button
+          id="confirmOk"
+          class="danger-btn"
+          type="button"
+        >
+          Confirm
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+
+  <div id="toastContainer" class="toast-container"></div>
+
+
+  <script type="module" src="app.js"></script>
+
+</body>
+          </html>
